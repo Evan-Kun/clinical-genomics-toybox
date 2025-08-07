@@ -1,0 +1,20 @@
+Clinical Genomics Toybox - Data Attribution
+
+This project uses the following datasets which are redistributed under their original licenses:
+
+1. Genome in a Bottle (GIAB) Consortium Data
+   - Source: https://www.nist.gov/programs-projects/genome-bottle
+   - License: Creative Commons Attribution 4.0 International License
+   - Citation: Zook, J.M., et al. (2019). An open resource for accurately benchmarking small variant and reference calls. Nature Biotechnology, 37(5), 561-566.
+
+2. Ensembl Reference Genome (GRCh38/hg38)
+   - Source: https://www.ensembl.org/
+   - License: Creative Commons Attribution 4.0 International License
+   - Citation: Cunningham, F., et al. (2022). Ensembl 2022. Nucleic Acids Research, 50(D1), D988-D995.
+
+3. ClinGen Dosage Sensitivity Database
+   - Source: https://www.clinicalgenome.org/
+   - License: Creative Commons Attribution 4.0 International License
+   - Citation: Riggs, E.R., et al. (2020). Technical standards for the interpretation and reporting of constitutional copy-number variants: a joint consensus recommendation of the American College of Medical Genetics and Genomics (ACMG) and the Clinical Genome Resource (ClinGen). Genetics in Medicine, 22(2), 245-257.
+
+For questions about data usage, please refer to the original sources and their respective licenses.

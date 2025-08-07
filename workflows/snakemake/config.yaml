@@ -1,0 +1,30 @@
+# Clinical Genomics Toybox - Snakemake Configuration
+
+# Sample information
+samples:
+  - "NA12878"
+  - "NA12891" 
+  - "NA12892"
+
+# Reference genome
+reference: "data/reference/hg38.fa"
+
+# Output directory
+outdir: "results"
+
+# Tool versions and parameters
+tools:
+  bwa_mem2:
+    threads: 8
+  gatk:
+    version: "4.2.0"
+  deepvariant:
+    version: "1.4.0"
+  cnvkit:
+    version: "0.9.8"
+
+# Quality control thresholds
+qc:
+  min_quality: 20
+  min_coverage: 10
+  min_mapping_quality: 30

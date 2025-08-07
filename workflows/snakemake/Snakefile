@@ -1,0 +1,56 @@
+# Clinical Genomics Toybox - Snakemake Workflow
+# This is a template Snakefile that will be expanded with actual rules
+
+import os
+from pathlib import Path
+
+# Configuration
+configfile: "config.yaml"
+
+# Global variables
+SAMPLES = config["samples"]
+REFERENCE = config["reference"]
+OUTDIR = config["outdir"]
+
+# Rule all - defines the final outputs
+rule all:
+    input:
+        "results/multiqc/multiqc_report.html",
+        "results/variants/final.vcf.gz",
+        "results/benchmark/hap.py.summary.csv"
+
+# QC rules
+rule fastqc:
+    input:
+        "data/{sample}_R1.fastq.gz",
+        "data/{sample}_R2.fastq.gz"
+    output:
+        "results/qc/fastqc/{sample}_R1_fastqc.html",
+        "results/qc/fastqc/{sample}_R2_fastqc.html"
+    conda: "env/qc.yml"
+    shell:
+        "fastqc {input} -o results/qc/fastqc/"
+
+# Alignment rules
+rule bwa_mem:
+    input:
+        r1 = "data/{sample}_R1.fastq.gz",
+        r2 = "data/{sample}_R2.fastq.gz",
+        ref = REFERENCE
+    output:
+        "results/align/{sample}.bam"
+    conda: "env/align.yml"
+    shell:
+        "bwa-mem2 mem -t {threads} {input.ref} {input.r1} {input.r2} | "
+        "samtools view -bS - | "
+        "samtools sort -o {output}"
+
+# MultiQC aggregation
+rule multiqc:
+    input:
+        expand("results/qc/fastqc/{sample}_R1_fastqc.html", sample=SAMPLES)
+    output:
+        "results/multiqc/multiqc_report.html"
+    conda: "env/qc.yml"
+    shell:
+        "multiqc results/ -o results/multiqc/"

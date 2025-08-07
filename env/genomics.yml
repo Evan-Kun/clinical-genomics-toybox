@@ -1,0 +1,29 @@
+name: genomics
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.9
+  - snakemake
+  - nextflow
+  - bwa-mem2
+  - samtools
+  - picard
+  - gatk
+  - deepvariant
+  - bcftools
+  - hap.py
+  - snpeff
+  - vep
+  - cnvkit
+  - minimap2
+  - sniffles2
+  - truvari
+  - fastqc
+  - multiqc
+  - weasyprint
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
